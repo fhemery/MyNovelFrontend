@@ -1,0 +1,11 @@
+
+# Remove all folders that are used for building
+.tmp/
+build
+
+# Remove bower and npm folders
+assets/libs/
+node_modules
+
+# Removed reporting
+Reports/**

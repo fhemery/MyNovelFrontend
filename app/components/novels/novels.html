@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3> Choose a novel </h3>
+    </div>
+
+    <div class="panel-body">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>#Words</th>
+                <th>Last modification</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="nov in novels">
+                <td>{{nov.title}}</td>
+                <td>{{nov.nbWords}}</td>
+                <td>{{nov.lastModification | date }}</td>
+            </tr>
+            <tr ng-hide="novels.length">
+                <td colspan="3"> You currently have no novel ! Start by creating one !</td>
+            </tr>
+        </tbody> 
+    </div>
+
+    <div class="panel-footer novel-footer"><a href="#novel/new"> Create new novel</a></div>
+</div>

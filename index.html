@@ -1,0 +1,66 @@
+<html lang="en" data-ng-app="myNovel">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to myNovel</title>
+        <!-- build:css styles/lib.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="assets/libs/toastr/toastr.css" />
+        <link rel="stylesheet" href="assets/libs/angular-toastr/dist/angular-toastr.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css styles/app.css -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-myNovel-theme.css">
+        <link rel="stylesheet" href="/assets/css/default.css">
+        <!-- endinject -->
+        <!-- endbuild -->
+    </head>
+    <body data-ng-controller="rootCtrl" data-ng-cloak="">
+        <div class="container-fluid">
+            <div class="row">
+                <navbar-directive />
+            </div>
+
+            <div data-ng-view="" class="row"></div>
+        </div>
+
+        <!-- build:js js/lib.js -->
+        <!-- bower:js -->
+        <script src="assets/libs/jquery/dist/jquery.js"></script>
+        <script src="assets/libs/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="assets/libs/angular/angular.js"></script>
+        <script src="assets/libs/angular-route/angular-route.js"></script>
+        <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="assets/libs/angular-resource/angular-resource.js"></script>
+        <script src="assets/libs/lodash/dist/lodash.compat.js"></script>
+        <script src="assets/libs/restangular/dist/restangular.js"></script>
+        <script src="assets/libs/toastr/toastr.js"></script>
+        <script src="assets/libs/angular-toastr/dist/angular-toastr.js"></script>
+        <script src="assets/libs/angular-base64/angular-base64.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js js/app.js -->
+        <!-- inject:js -->
+        <script src="/app/app.module.js"></script>
+        <script src="/app/app.routes.js"></script>
+        <script src="/app/services/accountService.js"></script>
+        <script src="/app/services/loginService.js"></script>
+        <script src="/app/components/login/login.js"></script>
+        <script src="/app/components/home/home.js"></script>
+        <script src="/app/components/novels/novels.js"></script>
+        <script src="/app/components/signup/signup.js"></script>
+        <script src="/app/services/novels/novelsService.js"></script>
+        <script src="/app/shared/navbar/navbar.js"></script>
+        <!-- endinject -->
+
+        <!-- inject:templates.js -->
+        <script src="/.tmp/templates.js"></script>
+        <!-- endinject -->
+        <!-- endbuild -->
+
+    </body>
+</html>
