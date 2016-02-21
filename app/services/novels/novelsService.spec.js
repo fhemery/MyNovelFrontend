@@ -16,11 +16,21 @@ describe('myNovel.service.novels', function(){
     });
 
     describe('getAll function', function(){
-        it('should call /novels/ GET verb', function(){
+        it('should call /novel/ GET verb', function(){
             $httpBackend
             .expectGET('/novel/')
             .respond([]);
             novelsService.getAll();
+            $httpBackend.flush();
+        });
+    });
+
+    describe('create function', function(){
+        it ('should call /novel/ POST verb', function(){
+            $httpBackend
+                .expectPOST('/novel/')
+                .respond({});
+            novelsService.create({title: 't'});
             $httpBackend.flush();
         });
     });

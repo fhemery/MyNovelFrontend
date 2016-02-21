@@ -1,4 +1,4 @@
-angular.module('myNovel.login', ['toastr', 'myNovel.service.login'])
+angular.module('myNovel.login', ['toastr', 'myNovel.service.login', 'LocalStorageModule'])
 .directive('loginDirective', function() {
     return {
         restrict: 'E',
@@ -9,7 +9,8 @@ angular.module('myNovel.login', ['toastr', 'myNovel.service.login'])
     loginService, $location){
 
     loginService.getCurrent().then(function(user){
-        emitLogin(user);
+        $scope.login = user.username;
+        emitLogin($scope.login);
     },
     function(error){
         $location.path('/');

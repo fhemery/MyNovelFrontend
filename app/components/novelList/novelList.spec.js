@@ -1,4 +1,4 @@
-describe('myNovel.novels', function(){
+describe('myNovel.novelList', function(){
     var $rootScope;
     var resolvePromise = function(promise, isSuccess, value){
         if (isSuccess){
@@ -14,7 +14,7 @@ describe('myNovel.novels', function(){
     var novelsService;
     var toastr;
 
-    beforeEach(module('myNovel.novels'));
+    beforeEach(module('myNovel.novelList'));
 
     beforeEach(inject(function(_$rootScope_, _novelsService_, _$q_, _toastr_){
         $rootScope = _$rootScope_;
@@ -26,7 +26,7 @@ describe('myNovel.novels', function(){
     beforeEach(inject(function($controller){
         $scope = $rootScope.$new();
         createController = function(){
-            return $controller('novelsCtrl', {
+            return $controller('novelListCtrl', {
                 '$scope': $scope,
                 'novelsService': novelsService
             });
@@ -46,7 +46,6 @@ describe('myNovel.novels', function(){
     });
 
     describe('at initialization', function(){
-
         it('should initialize novels as an empty list', function(){
             expect($scope.novels).toEqual([]);
         });

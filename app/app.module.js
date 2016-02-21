@@ -1,6 +1,6 @@
 angular.module('myNovel', ['myNovel.home', 'myNovel.common',
                'myNovel.login', 'myNovel.signup',
-               'myNovel.novels', 'ui.bootstrap'])
+               'myNovel.novelList', 'myNovel.novelCreate', 'ui.bootstrap'])
 .config(function(RestangularProvider, $routeProvider, $locationProvider, $tooltipProvider){
     RestangularProvider.setBaseUrl('http://www.mynovel.loc:8080/api/');
     $routeProvider.otherwise({redirectTo: '/'});
@@ -18,8 +18,10 @@ angular.module('myNovel', ['myNovel.home', 'myNovel.common',
     // Manage the login in the top most scope, so that all scopes benefit from the user info.
     $rootScope.$on('user:login', function(event, user){
         $scope.user = user;
-        console.log('Relocating');
-        $location.path('/novels');
+        if ($location.path() === '/'){
+            console.log('Relocating');
+            $location.path('/novels');
+        }
     });
 
 });
