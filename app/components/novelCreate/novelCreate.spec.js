@@ -68,7 +68,7 @@ describe('myNovel.novelCreate', function(){
             });
 
             it('should relocate to the novel list screen', function(){
-                expect($location.path).toHaveBeenCalledWith('#/novels');
+                expect($location.path).toHaveBeenCalledWith('/novels');
             });
 
             it('should open a toastr', function(){

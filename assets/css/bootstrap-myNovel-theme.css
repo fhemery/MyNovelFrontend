@@ -2,6 +2,14 @@
     background: #EADD80;
 }
 
+#footer{
+  background:#EADD80;
+  /*position:fixed;
+  bottom:0px;*/
+  width:100%;
+  /*height:40px;*/
+}
+
 /******* FORMS ********/
 
 .form-horizontal div{
@@ -18,4 +26,16 @@
 }
 
 
+.action{
+    cursor:pointer;
+}
 
+.main-panel{
+    height:100%;
+}
+
+html, body { 
+  margin:0; 
+  padding:0; 
+  height:100%; 
+}

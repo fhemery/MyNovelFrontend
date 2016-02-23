@@ -10,6 +10,7 @@
                 <th>Title</th>
                 <th>#Words</th>
                 <th>Last modification</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -17,9 +18,12 @@
                 <td>{{nov.title}}</td>
                 <td>{{nov.nbWords}}</td>
                 <td>{{nov.lastModification | date }}</td>
+                <td>
+                    <span class="glyphicon glyphicon-folder-open action" ng-click="selectNovel(nov.novelId)" />
+                </td>
             </tr>
             <tr ng-hide="novels.length">
-                <td colspan="3"> You currently have no novel ! Start by creating one !</td>
+                <td colspan="4"> You currently have no novel ! Start by creating one !</td>
             </tr>
         </tbody> 
     </div>

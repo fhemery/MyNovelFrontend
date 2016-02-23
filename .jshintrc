@@ -60,6 +60,7 @@
         "createController": false,
         /** Removing jasmine unknown symbols */
         "describe": false,
+        "xdescribe": false,
         "expect": false,
         "beforeEach": false,
         "afterEach": false,

@@ -1,12 +1,13 @@
 angular.module('myNovel', ['myNovel.home', 'myNovel.common',
                'myNovel.login', 'myNovel.signup',
-               'myNovel.novelList', 'myNovel.novelCreate', 'ui.bootstrap'])
-.config(function(RestangularProvider, $routeProvider, $locationProvider, $tooltipProvider){
+               'myNovel.novelList', 'myNovel.novelCreate',
+               'myNovel.novelEdit', 'ui.bootstrap'])
+.config(function(RestangularProvider, $routeProvider, $locationProvider, toastrConfig){
     RestangularProvider.setBaseUrl('http://www.mynovel.loc:8080/api/');
     $routeProvider.otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(false);
 
-    $tooltipProvider.options({
+    angular.extend(toastrConfig, {
         placement: 'top',
         animation: true,
         popupDelay: 0,

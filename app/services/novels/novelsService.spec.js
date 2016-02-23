@@ -34,4 +34,14 @@ describe('myNovel.service.novels', function(){
             $httpBackend.flush();
         });
     });
+
+    describe('get function', function(){
+        it('should call /novel/{id} GET verb', function(){
+            $httpBackend
+                .expectGET('/novel/10')
+                .respond({});
+            novelsService.get(10);
+            $httpBackend.flush();
+        });
+    });
 });

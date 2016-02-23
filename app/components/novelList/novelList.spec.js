@@ -13,14 +13,16 @@ describe('myNovel.novelList', function(){
     var $scope, $q, novelsController;
     var novelsService;
     var toastr;
+    var $location;
 
     beforeEach(module('myNovel.novelList'));
 
-    beforeEach(inject(function(_$rootScope_, _novelsService_, _$q_, _toastr_){
+    beforeEach(inject(function(_$rootScope_, _novelsService_, _$q_, _toastr_, _$location_){
         $rootScope = _$rootScope_;
         novelsService = _novelsService_;
         $q = _$q_;
         toastr = _toastr_;
+        $location = _$location_;
     }));
 
     beforeEach(inject(function($controller){
@@ -39,6 +41,7 @@ describe('myNovel.novelList', function(){
     beforeEach(function(){
         novelsServicePromise = $q.defer();
         spyOn(novelsService, 'getAll').and.returnValue(novelsServicePromise.promise);
+        spyOn($location, 'path');
     });
 
     beforeEach(function(){
@@ -53,6 +56,13 @@ describe('myNovel.novelList', function(){
         it('should fetch the novels', function(){
             resolvePromise(novelsServicePromise, true, novelsApiResponse);
             expect($scope.novels.length).toBe(1);
+        });
+    });
+
+    describe('function selectNovel', function(){
+        it('should redirect to selecting novel', function(){
+            $scope.selectNovel(10);
+            expect($location.path).toHaveBeenCalledWith('/novel/10');
         });
     });
 });

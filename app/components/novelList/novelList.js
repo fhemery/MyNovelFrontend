@@ -5,10 +5,14 @@ angular.module('myNovel.novelList', ['ngRoute', 'toastr', 'myNovel.service.novel
         controller: 'novelListCtrl'
     });
 })
-.controller('novelListCtrl', function ($scope, toastr, novelsService) {
+.controller('novelListCtrl', function ($scope, toastr, novelsService, $location) {
     $scope.novels = [];
 
     novelsService.getAll().then(function(novels){
         $scope.novels = novels;
     });
+
+    $scope.selectNovel = function(novelId){
+        $location.path('/novel/' + novelId);
+    };
 });

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en" data-ng-app="myNovel">
     <head>
         <meta charset="utf-8">
@@ -20,11 +21,13 @@
     </head>
     <body data-ng-controller="rootCtrl" data-ng-cloak="">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" id="header">
                 <navbar-directive />
             </div>
 
-            <div data-ng-view="" class="row"></div>
+            <div id="content" data-ng-view="" class="row"></div>
+
+            <div class="row" id="footer">myNovel version 0.1</div>
         </div>
 
         <!-- build:js js/lib.js -->
@@ -35,10 +38,10 @@
         <script src="assets/libs/angular-route/angular-route.js"></script>
         <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="assets/libs/angular-resource/angular-resource.js"></script>
-        <script src="assets/libs/lodash/dist/lodash.compat.js"></script>
+        <script src="assets/libs/lodash/lodash.js"></script>
         <script src="assets/libs/restangular/dist/restangular.js"></script>
         <script src="assets/libs/toastr/toastr.js"></script>
-        <script src="assets/libs/angular-toastr/dist/angular-toastr.js"></script>
+        <script src="assets/libs/angular-toastr/dist/angular-toastr.tpls.js"></script>
         <script src="assets/libs/angular-base64/angular-base64.js"></script>
         <script src="assets/libs/angular-local-storage/dist/angular-local-storage.js"></script>
         <!-- endbower -->
@@ -53,10 +56,11 @@
         <script src="/app/components/home/home.js"></script>
         <script src="/app/components/login/login.js"></script>
         <script src="/app/components/novelCreate/novelCreate.js"></script>
-        <script src="/app/components/novelList/novelList.js"></script>
+        <script src="/app/components/novelEdit/novelEdit.js"></script>
         <script src="/app/components/signup/signup.js"></script>
-        <script src="/app/services/novels/novelsService.js"></script>
+        <script src="/app/components/novelList/novelList.js"></script>
         <script src="/app/shared/navbar/navbar.js"></script>
+        <script src="/app/services/novels/novelsService.js"></script>
         <!-- endinject -->
 
         <!-- inject:templates.js -->
@@ -64,5 +68,19 @@
         <!-- endinject -->
         <!-- endbuild -->
 
+        <script type="text/javascript">
+            function resizeContent(){
+                if ($('#header').height() === 0){
+                    setTimeout(resizeContent, 500);
+                    return;
+                }
+
+                var contentHeight = $(window).innerHeight() - $('#header').height() - $('#footer').height() -20;
+                $('#content').height(contentHeight);
+            }
+            
+            $(window).resize(resizeContent);
+            $(document).ready(resizeContent());
+        </script>
     </body>
 </html>

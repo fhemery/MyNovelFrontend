@@ -1,0 +1,27 @@
+<div class="novelEdit">
+
+    <!-- Chapter list area -->
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{novel.title}}
+            </div>
+            <div class="panel-body">
+                <uib-accordion close-others="oneAtATime">
+                    <uib-accordion-group ng-repeat="chapter in novel.chapters" heading="{{chapter.title}}">
+                      
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main panel area -->
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body main-panel">
+                Here goes main panel
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,6 @@ angular.module('myNovel.novelCreate', ['ngRoute', 'toastr', 'myNovel.service.nov
     $scope.summary = '';
 
     $scope.createNovel = function(){
-        console.log('creating novel');
         var newNovel = {title: $scope.title, summary: $scope.summary};
         novelsService.create(newNovel).then(function(response){
             toastr.success('Novel created');
