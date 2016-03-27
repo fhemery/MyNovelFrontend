@@ -76,4 +76,11 @@ describe('myNovel.novelCreate', function(){
             });
         });
     });
+
+    describe('function back', function(){
+        it('should redirect to novels screen', function(){
+            $scope.back();
+            expect($location.path).toHaveBeenCalledWith('/novels');
+        });
+    });
 });

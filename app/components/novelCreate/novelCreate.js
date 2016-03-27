@@ -16,4 +16,8 @@ angular.module('myNovel.novelCreate', ['ngRoute', 'toastr', 'myNovel.service.nov
             $location.path('/novels');
         });
     };
+
+    $scope.back = function(){
+        $location.path('/novels');
+    };
 });
