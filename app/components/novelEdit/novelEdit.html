@@ -4,8 +4,9 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
+                <a href="#/novels" class="glyphicon glyphicon-arrow-left" title="Back to main screen" > </a>
                 {{novel.title}} 
-                <a href="#/novels" class="glyphicon glyphicon-arrow-left" title="Back to main screen" />
+
             </div>
             <div class="panel-body">
                 <uib-accordion close-others="oneAtATime">
@@ -13,6 +14,8 @@
                       
                     </uib-accordion-group>
                 </uib-accordion>
+
+                <button class="btn" ng-click="showAddChapter()">Add chapter</button>
             </div>
         </div>
     </div>
@@ -21,7 +24,10 @@
     <div class="col-md-9">
         <div class="panel panel-default">
             <div class="panel-body main-panel">
-                Here goes main panel
+                <div ng-show="currentScreen === 'addChapter'" >
+                    <add-chapter novel-id="novelId">
+                     </add-chapter>
+                 </div>
             </div>
         </div>
     </div>

@@ -11,20 +11,21 @@ describe('myNovel.novelEdit', function(){
 
     var createController;
     var $scope, $q, novelsController;
-    var novelsService;
+    var novelsService, editContext;
     var toastr;
     var $routeParams, $location;
 
     beforeEach(module('myNovel.novelEdit'));
 
     beforeEach(inject(function(_$rootScope_, _novelsService_, _$q_,
-        _toastr_, _$routeParams_, _$location_){
+        _toastr_, _$routeParams_, _$location_, _editContext_){
         $rootScope = _$rootScope_;
         novelsService = _novelsService_;
         $q = _$q_;
         toastr = _toastr_;
         $routeParams = _$routeParams_;
         $location = _$location_;
+        editContext = _editContext_;
     }));
 
     beforeEach(inject(function($controller){
@@ -33,7 +34,8 @@ describe('myNovel.novelEdit', function(){
             return $controller('novelEditCtrl', {
                 '$scope': $scope,
                 'novelsService': novelsService,
-                '$routeParams': {novelId: 10}
+                '$routeParams': {novelId: 10},
+                'editContext': editContext
             });
         };
     }));
@@ -61,8 +63,14 @@ describe('myNovel.novelEdit', function(){
             expect($scope.novel).toEqual({});
         });
 
+        it('should show default screen', function(){
+            expect($scope.currentScreen).toEqual('default');
+        });
+
         describe('When successfully fetching novel', function(){
             beforeEach(function(){
+                spyOn(editContext, 'setNovel');
+                spyOn(editContext, 'registerForNovelChange');
                 resolvePromise(novelsServicePromise, true, successfulNovelsServiceResponse);
             });
 
@@ -72,6 +80,14 @@ describe('myNovel.novelEdit', function(){
 
             it('should display a toastr', function(){
                 expect(toastr.success).toHaveBeenCalled();
+            });
+
+            it('should set up the editContext\'s novel', function(){
+                expect(editContext.setNovel).toHaveBeenCalled();
+            });
+
+            it('should register to further updates on novel', function(){
+                expect(editContext.registerForNovelChange).toHaveBeenCalled();
             });
         });
 
@@ -88,6 +104,28 @@ describe('myNovel.novelEdit', function(){
             it('should call location', function(){
                 expect($location.path).toHaveBeenCalledWith('/novels');
             });
+        });
+    });
+
+    describe('showAddChapter function', function(){
+        beforeEach(function(){
+            spyOn(editContext, 'setCurrentScreen').and.callThrough();
+            $scope.showAddChapter();
+        });
+
+        it('should set currentScreen to addChapter', function(){
+            expect($scope.currentScreen).toBe('addChapter');
+        });
+
+        it('should call the editContext', function(){
+            expect(editContext.setCurrentScreen).toHaveBeenCalledWith('addChapter');
+        });
+    });
+
+    describe('manageNovel change function', function(){
+        it('should set the scope novel', function(){
+            $scope.manageNovelChange({id:10}, '');
+            expect($scope.novel.id).toEqual(10);
         });
     });
 });

@@ -5,6 +5,7 @@ module.exports = function(config){
     var files = [].concat(
         bowerFiles,
         './app/**/*.module.js',
+        './app/components/*/*.js',
         './app/**/*.js',
         './app/**/*.spec.js'
     );
@@ -28,7 +29,8 @@ module.exports = function(config){
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             'app/components/**/!(*.spec|partials|app).js': 'coverage',
-            'app/services/!(*.spec|partials|app).js' : 'coverage'
+            'app/services/!(*.spec|partials|app).js' : 'coverage',
+            'app/services/*/!(*.spec|partials|app).js' : 'coverage'
         },
 
         reporters: ['progress', 'coverage'],
