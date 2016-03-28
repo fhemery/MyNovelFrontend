@@ -2,22 +2,7 @@
 
     <!-- Chapter list area -->
     <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a href="#/novels" class="glyphicon glyphicon-arrow-left" title="Back to main screen" > </a>
-                {{novel.title}} 
-
-            </div>
-            <div class="panel-body">
-                <uib-accordion close-others="oneAtATime">
-                    <uib-accordion-group ng-repeat="chapter in novel.chapters" heading="{{chapter.title}}">
-                      
-                    </uib-accordion-group>
-                </uib-accordion>
-
-                <button class="btn" ng-click="showAddChapter()">Add chapter</button>
-            </div>
-        </div>
+        <list-chapter></list-chapter>
     </div>
 
     <!-- Main panel area -->

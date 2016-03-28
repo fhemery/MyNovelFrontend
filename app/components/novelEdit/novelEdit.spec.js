@@ -107,18 +107,13 @@ describe('myNovel.novelEdit', function(){
         });
     });
 
-    describe('showAddChapter function', function(){
+    describe('manageContextChange function', function(){
         beforeEach(function(){
-            spyOn(editContext, 'setCurrentScreen').and.callThrough();
-            $scope.showAddChapter();
+            $scope.manageContextChange('addChapter');
         });
 
         it('should set currentScreen to addChapter', function(){
             expect($scope.currentScreen).toBe('addChapter');
-        });
-
-        it('should call the editContext', function(){
-            expect(editContext.setCurrentScreen).toHaveBeenCalledWith('addChapter');
         });
     });
 

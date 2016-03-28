@@ -29,11 +29,15 @@ angular.module('myNovel.service.novelEditContext', [])
     var currentNovel = null;
     var currentNovelModificationCallbacks = [];
 
+    var notifyCallbacksOfNovelChange = function(action){
+        for (var i = 0; i < currentNovelModificationCallbacks.length; ++i){
+            currentNovelModificationCallbacks[i](currentNovel, action);
+        }
+    };
+
     var addChapter = function(chapter){
         currentNovel.chapters.push(chapter);
-        for (var i = 0; i < currentNovelModificationCallbacks.length; ++i){
-            currentNovelModificationCallbacks[i](currentNovel, 'chapter::add');
-        }
+        notifyCallbacksOfNovelChange('chapter::add');
     };
 
     var getNovel = function(novel){
@@ -42,9 +46,11 @@ angular.module('myNovel.service.novelEditContext', [])
 
     var setNovel = function(novel){
         currentNovel = novel;
+        notifyCallbacksOfNovelChange('novel::set');
     };
 
     var registerForNovelChange = function(callback){
+        console.log('received registration request');
         currentNovelModificationCallbacks.push(callback);
     };
 

@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="#/novels" class="glyphicon glyphicon-arrow-left" title="Back to main screen" > </a>
+        {{$ctrl.novel.title}} 
+
+    </div>
+    <div class="panel-body">
+        <uib-accordion close-others="oneAtATime">
+            <uib-accordion-group ng-repeat="chapter in $ctrl.novel.chapters" heading="{{chapter.title}}">
+              
+            </uib-accordion-group>
+        </uib-accordion>
+
+        <button class="btn" ng-click="$ctrl.showAddChapter()">Add chapter</button>
+    </div>
+</div>

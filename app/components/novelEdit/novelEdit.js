@@ -29,14 +29,11 @@ angular.module('myNovel.novelEdit', ['ngRoute', 'toastr',
         $location.path('/novels');
     });
 
-    $scope.showAddChapter = function(){
-        editContext.setCurrentScreen('addChapter');
-    };
-
     // Register callback for status change
-    var manageContextChange = function(newScreen){
+    $scope.manageContextChange = function(newScreen){
+        console.log('new screen called: ' + newScreen);
         $scope.currentScreen = newScreen;
     };
-    editContext.registerForScreenChange(manageContextChange);
+    editContext.registerForScreenChange($scope.manageContextChange);
 
 });

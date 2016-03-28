@@ -60,6 +60,12 @@ describe('service: novelEditContext', function(){
             editContext.setNovel(novel);
             expect(editContext.getNovel()).toBe(novel);
         });
+
+        it('should call registered callbacks', function(){
+            editContext.registerForNovelChange(self.callback);
+            editContext.setNovel({});
+            expect(self.callback).toHaveBeenCalled();
+        });
     });
 
     describe('function addChapter', function(){
