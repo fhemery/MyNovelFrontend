@@ -24,4 +24,14 @@ describe('myNovel.service.chapters', function(){
             $httpBackend.flush();
         });
     });
+
+    describe('getChapterDetails function', function(){
+        it('should call /novel/<id>/chapter/<id> GET verb', function(){
+            $httpBackend
+            .expectGET('/novel/1/chapter/2')
+            .respond({});
+            chaptersService.getChapterDetails(1, 2);
+            $httpBackend.flush();
+        });
+    });
 });

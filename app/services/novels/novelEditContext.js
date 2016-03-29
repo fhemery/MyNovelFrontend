@@ -29,6 +29,10 @@ angular.module('myNovel.service.novelEditContext', [])
     var currentNovel = null;
     var currentNovelModificationCallbacks = [];
 
+    var filterByChapterId = function(chapter){
+        return chapter.chapterId === this.valueOf();
+    };
+
     var notifyCallbacksOfNovelChange = function(action){
         for (var i = 0; i < currentNovelModificationCallbacks.length; ++i){
             currentNovelModificationCallbacks[i](currentNovel, action);
@@ -49,8 +53,15 @@ angular.module('myNovel.service.novelEditContext', [])
         notifyCallbacksOfNovelChange('novel::set');
     };
 
+    var updateChapter = function(newChapter){
+        var chapters = currentNovel.chapters;
+        var chapter = chapters.filter(filterByChapterId, newChapter.chapterId);
+        if (chapter.length > 0){
+            chapters[chapters.indexOf(chapter[0])] = newChapter;
+        }
+    };
+
     var registerForNovelChange = function(callback){
-        console.log('received registration request');
         currentNovelModificationCallbacks.push(callback);
     };
 
@@ -61,6 +72,7 @@ angular.module('myNovel.service.novelEditContext', [])
         addChapter: addChapter,
         getNovel: getNovel,
         setNovel: setNovel,
+        updateChapter: updateChapter,
         registerForNovelChange: registerForNovelChange
     };
 });

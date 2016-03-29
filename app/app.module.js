@@ -20,7 +20,6 @@ angular.module('myNovel', ['myNovel.home', 'myNovel.common',
     $rootScope.$on('user:login', function(event, user){
         $scope.user = user;
         if ($location.path() === '/'){
-            console.log('Relocating');
             $location.path('/novels');
         }
     });

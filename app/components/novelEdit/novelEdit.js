@@ -31,7 +31,6 @@ angular.module('myNovel.novelEdit', ['ngRoute', 'toastr',
 
     // Register callback for status change
     $scope.manageContextChange = function(newScreen){
-        console.log('new screen called: ' + newScreen);
         $scope.currentScreen = newScreen;
     };
     editContext.registerForScreenChange($scope.manageContextChange);

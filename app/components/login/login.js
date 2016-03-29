@@ -31,7 +31,6 @@ angular.module('myNovel.login', ['toastr', 'myNovel.service.login', 'LocalStorag
     };
 
     function emitLogin(user){
-        console.log('Login successful for ' + user);
         $rootScope.$emit('user:login', user);
     }
 });

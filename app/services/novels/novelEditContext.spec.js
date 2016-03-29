@@ -68,6 +68,21 @@ describe('service: novelEditContext', function(){
         });
     });
 
+    describe('function update chapter', function(){
+        it('should replace the chapter', function(){
+            var novel = {
+                novelId: 5,
+                chapters:[
+                    {chapterId: 1}
+                ]
+            };
+            var newChapter = {chapterId: 1, scenes: []};
+            editContext.setNovel(novel);
+            editContext.updateChapter(newChapter);
+            expect(novel.chapters[0].scenes.length).toBe(0);
+        });
+    });
+
     describe('function addChapter', function(){
         beforeEach(function(){
             editContext.setNovel({chapters:[]});

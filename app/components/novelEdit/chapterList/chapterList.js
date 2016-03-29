@@ -11,8 +11,22 @@ function listChapterCtrl($scope, toastr, chaptersService, $routeParams, editCont
         ctrl.novel = novel;
     };
 
+    var filterByChapterId = function(chapter){
+        return chapter.chapterId === this.valueOf();
+    };
+
+    ctrl.loadChapterDetails = function(chapterId){
+        console.log('loading details for ' + chapterId);
+        var chapter = ctrl.novel.chapters.filter(filterByChapterId, chapterId);
+        if (chapter.length === 1 && chapter[0].scenes.length === 0){
+            chaptersService.getChapterDetails(ctrl.novel.novelId,
+                chapterId).then(function(response){
+                editContext.updateChapter(response);
+            });
+        }
+    };
+
     ctrl.showAddChapter = function(){
-        console.log('Changing screen');
         editContext.setCurrentScreen('addChapter');
     };
     editContext.registerForNovelChange(ctrl.manageNovelUpdates);

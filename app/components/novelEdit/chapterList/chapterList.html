@@ -6,8 +6,11 @@
     </div>
     <div class="panel-body">
         <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group ng-repeat="chapter in $ctrl.novel.chapters" heading="{{chapter.title}}">
-              
+            <uib-accordion-group ng-repeat="chapter in $ctrl.novel.chapters" heading="{{chapter.title}}"
+            ng-click="$ctrl.loadChapterDetails(chapter.chapterId)">
+              <ul>
+                <li ng-repeat="scene in chapter.scenes">{{scene.title}}</li>
+              </ul>
             </uib-accordion-group>
         </uib-accordion>
 
