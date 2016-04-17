@@ -82,7 +82,7 @@ describe('component : listChapter', function(){
                 novelId: 1,
                 chapters: [
                     {chapterId: 1, scenes: [{}]},
-                    {chapterId: 2, scenes: []}
+                    {chapterId: 2, scenes: null}
                 ]
             };
         });
@@ -104,5 +104,23 @@ describe('component : listChapter', function(){
             expect(editContext.updateChapter).toHaveBeenCalledWith(successPromiseResult);
         });
 
+    });
+
+    describe('displayScene function', function(){
+        beforeEach(function(){
+            spyOn(editContext, 'setCurrentScreen');
+
+            component = $componentController('listChapter', {
+                $scope: scope,
+                chaptersService: chaptersService,
+                editContext: editContext
+            });
+        });
+
+        it('should set current Screen to scene details', function(){
+            var scene = {};
+            component.displayScene(scene);
+            expect(editContext.setCurrentScreen).toHaveBeenCalledWith('editScene', scene);
+        });
     });
 });

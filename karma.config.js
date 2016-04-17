@@ -33,7 +33,7 @@ module.exports = function(config){
             'app/services/*/!(*.spec|partials|app).js' : 'coverage'
         },
 
-        reporters: ['progress', 'coverage'],
+        reporters: ['dots', 'coverage'],
 
         coverageReporter: {
             dir: 'Reports/coverage',

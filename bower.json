@@ -27,7 +27,8 @@
     "angular-toastr": "^1.7.0",
     "jquery": "^2.2.1",
     "angular-base64": "^2.0.5",
-    "angular-local-storage": "^0.2.4"
+    "angular-local-storage": "^0.2.4",
+    "textAngular": "^1.5.0"
   },
   "resolutions": {
     "angular": "~1.5.0"

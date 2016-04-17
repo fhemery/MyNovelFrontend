@@ -14,6 +14,7 @@ module.exports = function(){
         ],
         build: './build/',
         css:[
+            'assets/libs/font-awesome/css/font-awesome.min.css',
             'assets/libs/bootstrap/dist/css/bootstrap.min.css',
             'assets/css/*.css',
             temp + '**/*.css',

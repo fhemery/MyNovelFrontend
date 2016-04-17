@@ -18,6 +18,9 @@ describe('service: novelEditContext', function(){
         it('should initialize current screen to default', function(){
             expect(editContext.getCurrentScreen()).toEqual('default');
         });
+        it('should initialize active object to null', function(){
+            expect(editContext.getActiveObject()).toBe(null);
+        });
     });
 
     describe('function setCurrentScreen', function(){
@@ -45,6 +48,11 @@ describe('service: novelEditContext', function(){
         it('should call the registered callbacks when changing state', function(){
             editContext.setCurrentScreen('addChapter');
             expect(self.callback).toHaveBeenCalled();
+        });
+
+        it('should set active object when called', function(){
+            editContext.setCurrentScreen('editScene', {});
+            expect(editContext.getActiveObject()).toEqual({});
         });
     });
 

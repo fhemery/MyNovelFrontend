@@ -8,11 +8,13 @@
         <!-- bower:css -->
         <link rel="stylesheet" href="assets/libs/toastr/toastr.css" />
         <link rel="stylesheet" href="assets/libs/angular-toastr/dist/angular-toastr.css" />
+        <link rel="stylesheet" href="assets/libs/textAngular/dist/textAngular.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:css styles/app.css -->
         <!-- inject:css -->
+        <link rel="stylesheet" href="/assets/libs/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="/assets/libs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="/assets/css/bootstrap-myNovel-theme.css">
         <link rel="stylesheet" href="/assets/css/default.css">
@@ -44,6 +46,15 @@
         <script src="assets/libs/angular-toastr/dist/angular-toastr.tpls.js"></script>
         <script src="assets/libs/angular-base64/angular-base64.js"></script>
         <script src="assets/libs/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="assets/libs/rangy/rangy-core.js"></script>
+        <script src="assets/libs/rangy/rangy-classapplier.js"></script>
+        <script src="assets/libs/rangy/rangy-highlighter.js"></script>
+        <script src="assets/libs/rangy/rangy-selectionsaverestore.js"></script>
+        <script src="assets/libs/rangy/rangy-serializer.js"></script>
+        <script src="assets/libs/rangy/rangy-textrange.js"></script>
+        <script src="assets/libs/textAngular/dist/textAngular.js"></script>
+        <script src="assets/libs/textAngular/dist/textAngular-sanitize.js"></script>
+        <script src="assets/libs/textAngular/dist/textAngularSetup.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -53,17 +64,18 @@
         <script src="/app/app.routes.js"></script>
         <script src="/app/services/accountService.js"></script>
         <script src="/app/services/loginService.js"></script>
+        <script src="/app/services/chapters/chaptersService.js"></script>
+        <script src="/app/services/novels/novelEditContext.js"></script>
+        <script src="/app/services/novels/novelsService.js"></script>
+        <script src="/app/shared/navbar/navbar.js"></script>
         <script src="/app/components/home/home.js"></script>
         <script src="/app/components/login/login.js"></script>
         <script src="/app/components/novelCreate/novelCreate.js"></script>
         <script src="/app/components/novelEdit/novelEdit.js"></script>
         <script src="/app/components/novelList/novelList.js"></script>
         <script src="/app/components/signup/signup.js"></script>
-        <script src="/app/services/chapters/chaptersService.js"></script>
-        <script src="/app/services/novels/novelEditContext.js"></script>
-        <script src="/app/services/novels/novelsService.js"></script>
-        <script src="/app/shared/navbar/navbar.js"></script>
         <script src="/app/components/novelEdit/addChapter/addChapter.js"></script>
+        <script src="/app/components/novelEdit/editScene/editScene.js"></script>
         <script src="/app/components/novelEdit/chapterList/chapterList.js"></script>
         <!-- endinject -->
 

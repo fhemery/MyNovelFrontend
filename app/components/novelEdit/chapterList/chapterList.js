@@ -6,6 +6,7 @@ angular.module('myNovel.novelEdit').component('listChapter', {
 function listChapterCtrl($scope, toastr, chaptersService, $routeParams, editContext){
     var ctrl = this;
     ctrl.novel = null;
+    ctrl.openedId = 9;
 
     ctrl.manageNovelUpdates = function(novel, action){
         ctrl.novel = novel;
@@ -16,14 +17,21 @@ function listChapterCtrl($scope, toastr, chaptersService, $routeParams, editCont
     };
 
     ctrl.loadChapterDetails = function(chapterId){
-        console.log('loading details for ' + chapterId);
-        var chapter = ctrl.novel.chapters.filter(filterByChapterId, chapterId);
-        if (chapter.length === 1 && chapter[0].scenes.length === 0){
-            chaptersService.getChapterDetails(ctrl.novel.novelId,
-                chapterId).then(function(response){
-                editContext.updateChapter(response);
-            });
+        var chapters = ctrl.novel.chapters.filter(filterByChapterId, chapterId);
+        if (chapters.length === 1){
+            var chapter = chapters[0];
+            if (chapter.scenes === null){
+                chaptersService.getChapterDetails(ctrl.novel.novelId,
+                    chapterId).then(function(response){
+                    editContext.updateChapter(response);
+
+                });
+            }
         }
+    };
+
+    ctrl.displayScene = function(scene){
+        editContext.setCurrentScreen('editScene', scene);
     };
 
     ctrl.showAddChapter = function(){

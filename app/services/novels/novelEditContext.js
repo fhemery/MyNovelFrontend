@@ -4,17 +4,28 @@ angular.module('myNovel.service.novelEditContext', [])
     /*********** SCREEN MANAGEMENT ****************/
     var currentScreenModificationCallbacks = [];
     var currentScreen = 'default';
-    var allowedScreenValues = ['default', 'addChapter'];
+    var allowedScreenValues = ['default', 'addChapter', 'editScene'];
+    var activeObject = null;
     var getCurrentScreen = function(){
         return currentScreen;
     };
 
-    var setCurrentScreen = function(newScreen){
+    var getActiveObject = function(){
+        return activeObject;
+    };
+
+    var setCurrentScreen = function(newScreen, obj){
         var oldStep = currentScreen;
         if (allowedScreenValues.indexOf(newScreen) !== -1){
             currentScreen = newScreen;
         }
-        if (currentScreen !== oldStep){
+        if (currentScreen !== oldStep || (!!obj && obj !== activeObject)) {
+            if (!!obj) {
+                activeObject = obj;
+            } else {
+                activeObject = null;
+            }
+
             for (var i = 0; i < currentScreenModificationCallbacks.length; ++i){
                 currentScreenModificationCallbacks[i](currentScreen);
             }
@@ -69,6 +80,7 @@ angular.module('myNovel.service.novelEditContext', [])
         getCurrentScreen : getCurrentScreen,
         setCurrentScreen : setCurrentScreen,
         registerForScreenChange : registerForScreenChange,
+        getActiveObject: getActiveObject,
         addChapter: addChapter,
         getNovel: getNovel,
         setNovel: setNovel,
