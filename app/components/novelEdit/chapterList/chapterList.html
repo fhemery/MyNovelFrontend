@@ -12,10 +12,7 @@
                 <li ng-repeat="scene in chapter.scenes" ng-click="$ctrl.displayScene(scene)">{{scene.title}}</li>
               </ul>
               <div ng-show="chapter.scenes !== null && chapter.scenes.length === 0">No scene... yet!</div>
-              <div class="text-center">
-                  <span class="glyphicon glyphicon-plus"
-                  title="Add Scene" ng-click="$ctrl.addScene(chapter)"></span>
-              </div>
+              <button class="btn text-center" ng-click="$ctrl.addScene(chapter)"> Add scene</button>
             </uib-accordion-group>
         </uib-accordion>
 
