@@ -4,7 +4,7 @@ angular.module('myNovel.service.novelEditContext', [])
     /*********** SCREEN MANAGEMENT ****************/
     var currentScreenModificationCallbacks = [];
     var currentScreen = 'default';
-    var allowedScreenValues = ['default', 'addChapter', 'editScene'];
+    var allowedScreenValues = ['default', 'addChapter', 'editScene', 'addScene'];
     var activeObject = null;
     var getCurrentScreen = function(){
         return currentScreen;
@@ -27,7 +27,7 @@ angular.module('myNovel.service.novelEditContext', [])
             }
 
             for (var i = 0; i < currentScreenModificationCallbacks.length; ++i){
-                currentScreenModificationCallbacks[i](currentScreen);
+                currentScreenModificationCallbacks[i](currentScreen, obj);
             }
         }
     };

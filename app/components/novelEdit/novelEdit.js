@@ -1,6 +1,7 @@
 angular.module('myNovel.novelEdit', ['ngRoute', 'toastr',
     'myNovel.service.novels', 'myNovel.service.chapters',
-    'ui.bootstrap', 'myNovel.service.novelEditContext', 'textAngular'])
+    'myNovel.service.scenes', 'ui.bootstrap',
+    'myNovel.service.novelEditContext', 'textAngular'])
 .config(function($routeProvider){
     $routeProvider.when('/novel/:novelId', {
         templateUrl : 'app/components/novelEdit/novelEdit.html',

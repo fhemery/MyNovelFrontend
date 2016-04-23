@@ -123,4 +123,22 @@ describe('component : listChapter', function(){
             expect(editContext.setCurrentScreen).toHaveBeenCalledWith('editScene', scene);
         });
     });
+
+    describe('addScene function', function(){
+        beforeEach(function () {
+            spyOn(editContext, 'setCurrentScreen');
+
+            component = $componentController('listChapter', {
+                $scope: scope,
+                chaptersService: chaptersService,
+                editContext: editContext
+            });
+        });
+
+        it('should call setCurrentScreen from the editContext', function(){
+            var chapter = {chapterId:1};
+            component.addScene(chapter);
+            expect(editContext.setCurrentScreen).toHaveBeenCalledWith('addScene', chapter);
+        });
+    });
 });

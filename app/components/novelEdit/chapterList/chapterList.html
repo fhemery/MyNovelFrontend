@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <a href="#/novels" class="glyphicon glyphicon-arrow-left" title="Back to main screen" > </a>
-        {{$ctrl.novel.title}} 
+        {{$ctrl.novel.title}}
 
     </div>
     <div class="panel-body">
@@ -12,6 +12,10 @@
                 <li ng-repeat="scene in chapter.scenes" ng-click="$ctrl.displayScene(scene)">{{scene.title}}</li>
               </ul>
               <div ng-show="chapter.scenes !== null && chapter.scenes.length === 0">No scene... yet!</div>
+              <div class="text-center">
+                  <span class="glyphicon glyphicon-plus"
+                  title="Add Scene" ng-click="$ctrl.addScene(chapter)"></span>
+              </div>
             </uib-accordion-group>
         </uib-accordion>
 

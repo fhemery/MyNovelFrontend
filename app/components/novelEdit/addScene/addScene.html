@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Add new scene</h3>
+    </div>
+    <div class="panel-body">
+        <form ng-submit="$ctrl.addScene()" name="addSceneForm" novalidate>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" name="title" ng-model="$ctrl.title">
+            </div>
+            <div class="form-group">
+                <label for="summary">Summary:</label>
+                <textarea class="form-control" rows="3" name="summary" ng-model="$ctrl.summary"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Create</button>
+        </form>
+
+        <button class="btn btn-default" ng-click="$ctrl.back()">Back to novel</button>
+    </div>
+</div>

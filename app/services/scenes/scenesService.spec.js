@@ -15,9 +15,9 @@ describe('scenesService', function(){
     });
 
     describe('create function', function(){
-        it('should perform a call to /novel/{novelId}/scenes POST verb', function(){
+        it('should perform a call to /novel/{novelId}/scene/ POST verb', function(){
             $httpBackend
-            .expectPOST('/novel/12/scenes')
+            .expectPOST('/novel/12/scene/')
             .respond({});
             scenesService.create(12, {});
         });

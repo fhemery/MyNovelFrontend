@@ -24,7 +24,6 @@ function listChapterCtrl($scope, toastr, chaptersService, $routeParams, editCont
                 chaptersService.getChapterDetails(ctrl.novel.novelId,
                     chapterId).then(function(response){
                     editContext.updateChapter(response);
-
                 });
             }
         }
@@ -36,6 +35,10 @@ function listChapterCtrl($scope, toastr, chaptersService, $routeParams, editCont
 
     ctrl.showAddChapter = function(){
         editContext.setCurrentScreen('addChapter');
+    };
+
+    ctrl.addScene = function(chapter){
+        editContext.setCurrentScreen('addScene', chapter);
     };
     editContext.registerForNovelChange(ctrl.manageNovelUpdates);
 }
