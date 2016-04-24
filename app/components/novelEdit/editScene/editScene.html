@@ -1,5 +1,9 @@
-<h2>{{$ctrl.scene.title}}</h2>
+<input type="text" class="input-lg" ng-model="$ctrl.scene.title"></input>
 <text-angular ng-model="$ctrl.scene.content"></text-angular>
 <div class="row">
 <button ng-click="$ctrl.save()" class="btn btn-success pull-right">Save</button>
+</div>
+<div class="form-group">
+    <label for="summary">Summary:</label>
+    <textarea class="form-control" rows="3" name="summary" ng-model="$ctrl.scene.summary"></textarea>
 </div>

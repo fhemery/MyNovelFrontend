@@ -22,4 +22,13 @@ describe('scenesService', function(){
             scenesService.create(12, {});
         });
     });
+
+    describe('update function', function(){
+        it('should perform a call to /novel/{novelId}/scene/{sceneId} PUT verb', function(){
+            $httpBackend
+            .expectPOST('/novel/12/scene/1')
+            .respond({});
+            scenesService.update(12, {sceneId: 1});
+        });
+    });
 });
